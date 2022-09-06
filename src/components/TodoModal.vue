@@ -11,13 +11,61 @@
       </div>
       <div class="input-wrapper flex flex-col justify-start mt-4">
         <label data-cy="modal-add-priority-title" for="priority" class="font-semibold text-sm">PRIORITY</label>
-        <select data-cy="modal-add-priority-dropdown" v-model="todoData.priority" name="priority" id="priority" class="w-fit px-4 py-3 mt-2 border border-gray-300 rounded-md">
-          <option data-cy="modal-add-priority-item" value="very-high">Very High</option>
-          <option value="high">High</option>
-          <option value="normal">Medium</option>
-          <option value="low">Low</option>
-          <option value="very-low">Very Low</option>
-        </select>
+        <div class="relative mt-4 min-w-[150px]">
+          <a data-cy="modal-add-priority-dropdown" @click="toggleDropdown" class="px-4 py-3 mt-2 border border-gray-300 rounded-md flex items-center max-w-fit cursor-pointer">
+            <div data-cy="modal-add-priority-item" class="flex items-center">
+              <div v-if="todoData.priority === 'very-high'" class="w-[15px] h-[15px] rounded-full bg-red-500 mr-3"></div>
+              <div v-else-if="todoData.priority === 'high'" class="w-[15px] h-[15px] rounded-full bg-amber-500 mr-3"></div>
+              <div v-else-if="todoData.priority === 'normal'" class="w-[15px] h-[15px] rounded-full bg-green-500 mr-3"></div>
+              <div v-else-if="todoData.priority === 'low'" class="w-[15px] h-[15px] rounded-full bg-blue-500 mr-3"></div>
+              <div v-else-if="todoData.priority === 'very-low'" class="w-[15px] h-[15px] rounded-full bg-purple-500 mr-3"></div>
+              {{ renderPriority }}
+            </div>
+            <font-awesome-icon icon="fa-solid fa-chevron-down" class="ml-4" />
+          </a>
+          <div v-show="isDropdownOpen" class="absolute min-w-[200px] z-1 border shadow-md bg-white rounded-lg mt-3">
+            <a
+              @click="setPriority('very-high')"
+              data-cy="modal-add-priority-very-high"
+              class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
+            >
+              <div class="w-[15px] h-[15px] rounded-full bg-red-500 mr-3"></div>
+              Very High
+            </a>
+            <a
+              @click="setPriority('high')"
+              data-cy="modal-add-priority-high"
+              class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
+            >
+              <div class="w-[15px] h-[15px] rounded-full bg-amber-500 mr-3"></div>
+              High
+            </a>
+            <a
+              @click="setPriority('normal')"
+              data-cy="modal-add-priority-normal"
+              class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
+            >
+              <div class="w-[15px] h-[15px] rounded-full bg-green-500 mr-3"></div>
+              Medium
+            </a>
+            <a
+              @click="setPriority('low')"
+              data-cy="modal-add-priority-low"
+              class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
+            >
+              <div class="w-[15px] h-[15px] rounded-full bg-blue-500 mr-3"></div>
+              Low
+            </a>
+            <a
+              @click="setPriority('very-low')"
+              data-cy="modal-add-priority-very-low"
+              class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
+            >
+              <div class="w-[15px] h-[15px] rounded-full bg-purple-500 mr-3"></div>
+              Very Low
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal-footer w-full border-t p-5 flex justify-end text-lg font-bold">
@@ -46,6 +94,23 @@ export default {
       todoData: {
         title: '',
         priority: 'very-high'
+      },
+      isDropdownOpen: false
+    }
+  },
+  computed: {
+    renderPriority() {
+      switch (this.todoData.priority) {
+        case 'very-high':
+          return 'Very High'
+        case 'high':
+          return 'High'
+        case 'normal':
+          return 'Medium'
+        case 'low':
+          return 'Low'
+        case 'very-low':
+          return 'Very Low'
       }
     }
   },
@@ -53,7 +118,7 @@ export default {
     async saveTodo() {
       if (this.mode === 'edit') {
         if (this.todoData.title === '' || this.todoData.priority === '') {
-          console.log('field empty')
+          alert('Silahkan lengkapi field yang kosong')
         } else {
           await axios.patch(`https://todo.api.devcode.gethired.id/todo-items/${this.todoData.id}`, {
             title: this.todoData.title,
@@ -82,6 +147,13 @@ export default {
           })
         }
       }
+    },
+    toggleDropdown() {
+      this.isDropdownOpen = !this.isDropdownOpen
+    },
+    setPriority(priority) {
+      this.todoData.priority = priority
+      this.toggleDropdown()
     }
   },
   mounted() {

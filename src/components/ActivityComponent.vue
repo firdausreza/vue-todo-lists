@@ -2,7 +2,7 @@
   <section v-if="!isLoading" class="w-full sm:max-w-5xl px-5 py-10 mx-auto">
     <div class="w-full flex justify-between">
       <h1 class="text-4xl font-bold" data-cy="activity-title">Activity</h1>
-      <button data-cy="activity-add-button" @click="createActivity" class="px-4 py-2 bg-blue-500 text-white rounded-full">
+      <button data-cy="activity-add-button" @click="createActivity" class="px-6 py-3 bg-blue-500 text-white rounded-full text-lg font-bold">
         <font-awesome-icon icon="fa-solid fa-plus fa-lg" class="mr-2" />
         Tambah
       </button>

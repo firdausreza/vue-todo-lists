@@ -115,6 +115,13 @@
   >
     <Modal :modal-type="setSelectedTodo" @close-modal="toggleModalWarning" @delete="(obj) => deleteTodo(obj.id)" />
   </section>
+  <section
+      v-show="isConfirmModalOpen"
+      @click.self="toggleConfirmModal"
+      class="transition-all delay-150 ease-in-out w-full h-screen top-0 left-0 fixed flex justify-center items-center bg-black/50 p-5"
+  >
+    <ModalConfirmation :modal-type="{type: 'List item'}" />
+  </section>
 </template>
 
 <script>
@@ -122,10 +129,11 @@ import axios from "axios";
 import TodoItem from "../TodoItem.vue";
 import TodoModal from "../TodoModal.vue";
 import Modal from "../Modal.vue";
+import ModalConfirmation from "../ModalConfirmation.vue";
 
 export default {
   name: "DetailComponent",
-  components: {TodoModal, TodoItem, Modal},
+  components: {TodoModal, TodoItem, Modal, ModalConfirmation},
   data() {
     return {
       activity: null,
@@ -134,6 +142,7 @@ export default {
       isTodoModalOpen: false,
       modeTodoModal: '',
       isModalOpen: false,
+      isConfirmModalOpen: false,
       isEditActivityTitle: false,
       isFilterDropdownOpen: false,
       setFilter: 'terbaru',
@@ -208,6 +217,9 @@ export default {
     toggleModalWarning(id = 0) {
       this.selectedTodoId = id
       this.isModalOpen = !this.isModalOpen
+    },
+    toggleConfirmModal() {
+      this.isConfirmModalOpen = !this.isConfirmModalOpen;
     },
     async deleteTodo(id) {
       await axios.delete(`https://todo.api.devcode.gethired.id/todo-items/${id}`).then(() => {

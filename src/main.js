@@ -22,7 +22,8 @@ import {
     faArrowDownAZ,
     faArrowDownZA,
     faFilter,
-    faXmark
+    faXmark,
+    faChevronDown
 } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
@@ -39,7 +40,8 @@ library.add(
     faArrowDownAZ,
     faArrowDownZA,
     faFilter,
-    faXmark
+    faXmark,
+    faChevronDown
 )
 
 import './assets/main.css'
