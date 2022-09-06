@@ -13,7 +13,7 @@
         <label data-cy="modal-add-priority-title" for="priority" class="font-semibold text-sm">PRIORITY</label>
         <div class="relative mt-4 min-w-[150px]">
           <a data-cy="modal-add-priority-dropdown" @click="toggleDropdown" class="px-4 py-3 mt-2 border border-gray-300 rounded-md flex items-center max-w-fit cursor-pointer">
-            <div data-cy="modal-add-priority-item" class="flex items-center">
+            <div class="flex items-center">
               <div v-if="todoData.priority === 'very-high'" class="w-[15px] h-[15px] rounded-full bg-red-500 mr-3"></div>
               <div v-else-if="todoData.priority === 'high'" class="w-[15px] h-[15px] rounded-full bg-amber-500 mr-3"></div>
               <div v-else-if="todoData.priority === 'normal'" class="w-[15px] h-[15px] rounded-full bg-green-500 mr-3"></div>
@@ -26,7 +26,7 @@
           <div v-show="isDropdownOpen" class="absolute min-w-[200px] z-1 border shadow-md bg-white rounded-lg mt-3">
             <a
               @click="setPriority('very-high')"
-              data-cy="modal-add-priority-very-high"
+              data-cy="modal-add-priority-item"
               class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
             >
               <div class="w-[15px] h-[15px] rounded-full bg-red-500 mr-3"></div>
@@ -34,7 +34,7 @@
             </a>
             <a
               @click="setPriority('high')"
-              data-cy="modal-add-priority-high"
+              data-cy="modal-add-priority-item"
               class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
             >
               <div class="w-[15px] h-[15px] rounded-full bg-amber-500 mr-3"></div>
@@ -42,7 +42,7 @@
             </a>
             <a
               @click="setPriority('normal')"
-              data-cy="modal-add-priority-normal"
+              data-cy="modal-add-priority-item"
               class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
             >
               <div class="w-[15px] h-[15px] rounded-full bg-green-500 mr-3"></div>
@@ -50,7 +50,7 @@
             </a>
             <a
               @click="setPriority('low')"
-              data-cy="modal-add-priority-low"
+              data-cy="modal-add-priority-item"
               class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
             >
               <div class="w-[15px] h-[15px] rounded-full bg-blue-500 mr-3"></div>
@@ -58,7 +58,7 @@
             </a>
             <a
               @click="setPriority('very-low')"
-              data-cy="modal-add-priority-very-low"
+              data-cy="modal-add-priority-item"
               class="w-full flex items-center px-4 py-3 hover:bg-gray-200 cursor-pointer"
             >
               <div class="w-[15px] h-[15px] rounded-full bg-purple-500 mr-3"></div>
