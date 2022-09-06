@@ -35,35 +35,35 @@
             <font-awesome-icon icon="fa-solid fa-filter" />
           </button>
           <div data-cy="sort-parent" v-show="isFilterDropdownOpen" class="absolute min-w-[200px] z-1 shadow-md bg-white rounded-lg mt-3">
-            <a data-cy="sort-latest" @click="setTodoFilter('terbaru')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
+            <a data-cy="sort-selection" @click="setTodoFilter('terbaru')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
               <div>
                 <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" class="mr-3 text-blue-500" />
                 Terbaru
               </div>
               <font-awesome-icon v-show="setFilter === 'terbaru'" icon="fa-solid fa-check" />
             </a>
-            <a data-cy="sort-oldest" @click="setTodoFilter('terlama')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
+            <a data-cy="sort-selection" @click="setTodoFilter('terlama')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
               <div>
                 <font-awesome-icon icon="fa-solid fa-arrow-up-wide-short" class="mr-3 text-blue-500" />
                 Terlama
               </div>
               <font-awesome-icon v-show="setFilter === 'terlama'" icon="fa-solid fa-check" />
             </a>
-            <a data-cy="sort-az" @click="setTodoFilter('az')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
+            <a data-cy="sort-selection" @click="setTodoFilter('az')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
               <div>
                 <font-awesome-icon icon="fa-solid fa-arrow-down-a-z" class="mr-3 text-blue-500" />
                 A-Z
               </div>
               <font-awesome-icon v-show="setFilter === 'az'" icon="fa-solid fa-check" />
             </a>
-            <a data-cy="sort-za" @click="setTodoFilter('za')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
+            <a data-cy="sort-selection" @click="setTodoFilter('za')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
               <div>
                 <font-awesome-icon icon="fa-solid fa-arrow-down-z-a" class="mr-3 text-blue-500" />
                 Z-A
               </div>
               <font-awesome-icon v-show="setFilter === 'za'" icon="fa-solid fa-check" />
             </a>
-            <a data-cy="sort-unfinished" @click="setTodoFilter('not-done')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
+            <a data-cy="sort-selection" @click="setTodoFilter('not-done')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
               <div>
                 <font-awesome-icon icon="fa-solid fa-arrow-right-arrow-left" class="mr-3 text-blue-500" />
                 Belum Selesai
