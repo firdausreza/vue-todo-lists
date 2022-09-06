@@ -84,8 +84,8 @@
     </div>
     <article v-if="activity && activity.todo_items.length > 0" class="w-full sm:max-w-5xl mx-auto p-5 flex flex-col justify-center mt-8">
       <TodoItem
-        :data-cy="`todo-item-${index}`"
-        v-for="(todo, index) in filteredTodos"
+        data-cy="todo-item"
+        v-for="todo in filteredTodos"
         :key="todo.id"
         :todo-item="todo"
         class="mt-3"

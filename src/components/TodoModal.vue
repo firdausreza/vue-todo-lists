@@ -9,10 +9,10 @@
         <label data-cy="modal-add-name-title" for="title" class="font-semibold text-sm">NAMA LIST ITEM</label>
         <input data-cy="modal-add-name-input" v-model="todoData.title" type="text" name="title" id="title" class="w-full px-4 py-3 rounded-md mt-2 border border-gray-300" placeholder="Tambahkan nama list item" required>
       </div>
-      <div data-cy="modal-add-priority-dropdown" class="input-wrapper flex flex-col justify-start mt-4">
+      <div class="input-wrapper flex flex-col justify-start mt-4">
         <label data-cy="modal-add-priority-title" for="priority" class="font-semibold text-sm">PRIORITY</label>
-        <select data-cy="modal-add-priority-item" v-model="todoData.priority" name="priority" id="priority" class="w-fit px-4 py-3 mt-2 border border-gray-300 rounded-md">
-          <option value="very-high">Very High</option>
+        <select data-cy="modal-add-priority-dropdown" v-model="todoData.priority" name="priority" id="priority" class="w-fit px-4 py-3 mt-2 border border-gray-300 rounded-md">
+          <option data-cy="modal-add-priority-item" value="very-high">Very High</option>
           <option value="high">High</option>
           <option value="normal">Medium</option>
           <option value="low">Low</option>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="modal-footer w-full border-t p-5 flex justify-end text-lg font-bold">
-      <button data-cy="modal-add-save" @click="saveTodo" class="px-12 py-3 bg-blue-500 text-white rounded-full ml-3">
+      <button data-cy="modal-add-save-button" @click="saveTodo" class="px-12 py-3 bg-blue-500 text-white rounded-full ml-3">
         Simpan
       </button>
     </div>

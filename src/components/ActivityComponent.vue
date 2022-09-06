@@ -8,16 +8,17 @@
       </button>
     </div>
     <article v-if="activityLists" class="w-full sm:max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
-      <ActivityItem :data-cy="`activity-item-${index}`" v-for="(activity, index) in activityLists" :key="activity.id" :activity="activity" @delete-activity="(act) => deleteActivity(act)" />
+      <ActivityItem data-cy="activity-item" v-for="activity in activityLists" :key="activity.id" :activity="activity" @delete-activity="(act) => deleteActivity(act)" />
     </article>
-    <article v-else class="w-full p-5 flex justify-center mt-8" data-cy="activity-empty-state">
-      <img src="../assets/activity-empty-state.png" alt="empty state" class="w-[300px] sm:w-[600px] mx-auto">
+    <article v-else class="w-full p-5 flex justify-center mt-8">
+      <img data-cy="activity-empty-state" src="../assets/activity-empty-state.png" alt="empty state" class="w-[300px] sm:w-[600px] mx-auto">
     </article>
   </section>
   <section v-else class="w-full flex justify-center items-center h-[800px]">
     <img src="../assets/load.svg" alt="loader" class="animate-spin w-[50px]">
   </section>
   <section
+    @click.self="toggleModal"
     v-show="isModalOpen"
     class="transition-all delay-150 ease-in-out w-full h-screen top-0 left-0 fixed flex justify-center items-center bg-black/50 p-5"
   >
@@ -25,7 +26,7 @@
   </section>
   <section
       v-show="isConfirmModalOpen"
-      @click="toggleConfirmModal"
+      @click.self="toggleConfirmModal"
       class="transition-all delay-150 ease-in-out w-full h-screen top-0 left-0 fixed flex justify-center items-center bg-black/50 p-5"
   >
     <ModalConfirmation :modal-type="selectedActivity" />
