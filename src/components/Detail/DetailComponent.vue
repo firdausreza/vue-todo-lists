@@ -7,7 +7,7 @@
         </router-link>
         <div v-if="!isEditActivityTitle" class="flex items-center">
           <h1 class="text-4xl font-bold ml-4" data-cy="todo-title">
-            {{activity.title}}
+            {{ activity && activity.title ? activity.title : '' }}
           </h1>
           <a
             data-cy="todo-title-edit-button"
@@ -103,7 +103,7 @@
     <TodoModal
       @close-modal="toggleTodoModal"
       @update-todos="fetchAll"
-      :activity-id="activity.id"
+      :activity-id="activity && activity.id ? activity.id : 0"
       :mode="modeTodoModal"
       :todo="setSelectedTodo"
       :key="modeTodoModal"
@@ -156,7 +156,7 @@ export default {
   },
   computed: {
     setSelectedTodo() {
-      return this.activity.todo_items.filter((item) => item.id === this.selectedTodoId)[0]
+      return (this.activity || {}).todo_items?.filter((item) => item.id === this.selectedTodoId)[0]
     }
   },
   watch: {
