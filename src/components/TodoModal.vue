@@ -69,7 +69,12 @@
       </div>
     </div>
     <div class="modal-footer w-full border-t p-5 flex justify-end text-lg font-bold">
-      <button data-cy="modal-add-save-button" @click="saveTodo" class="px-12 py-3 bg-blue-500 text-white rounded-full ml-3">
+      <button
+        data-cy="modal-add-save-button"
+        @click="saveTodo"
+        class="px-12 py-3 bg-blue-500 text-white rounded-full ml-3"
+        :disabled="isNameInputError"
+      >
         Simpan
       </button>
     </div>
@@ -99,6 +104,9 @@ export default {
     }
   },
   computed: {
+    isNameInputError() {
+      return this.todoData.title === '';
+    },
     renderPriority() {
       switch (this.todoData.priority) {
         case 'very-high':
