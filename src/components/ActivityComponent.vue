@@ -60,7 +60,7 @@ export default {
   methods: {
     async fetchActivities() {
       this.isLoading = true
-      await axios.get('/api/activity-groups', {
+      await axios.get('https://todo.api.devcode.gethired.id/activity-groups', {
         params: {
           email: 'mhmmdrezalif@gmail.com'
         }
@@ -76,7 +76,7 @@ export default {
     },
     async deleteActivity(activity) {
       if (this.isModalOpen) {
-        await axios.delete(`/api/activity-groups/${this.selectedActivity.id}`)
+        await axios.delete(`https://todo.api.devcode.gethired.id/activity-groups/${this.selectedActivity.id}`)
           .then(() => this.isModalOpen = false)
           .then(() => this.isConfirmModalOpen = true)
           .then(async () => {
@@ -89,7 +89,7 @@ export default {
       }
     },
     createActivity() {
-      axios.post('/api/activity-groups', {
+      axios.post('https://todo.api.devcode.gethired.id/activity-groups', {
         title: 'New Activity',
         email: 'mhmmdrezalif@gmail.com'
       }).then(() => {

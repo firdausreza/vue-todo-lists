@@ -15,13 +15,13 @@ export default defineConfig(({command, mode}) => {
       }
     },
     server: {
-      proxy: {
-        '/api': {
-          target: env.VITE_BASE_URL,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        },
-      },
+      // proxy: {
+      //   '/api': {
+      //     target: env.VITE_BASE_URL,
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, '')
+      //   },
+      // },
       cors: true
     }
   }

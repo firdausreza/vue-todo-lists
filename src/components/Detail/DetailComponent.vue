@@ -181,14 +181,14 @@ export default {
       await this.fetchTodos()
     },
     async fetchActivity() {
-      await axios.get(`/api/activity-groups/${this.$route.params.id}`).then((res) => {
+      await axios.get(`https://todo.api.devcode.gethired.id/activity-groups/${this.$route.params.id}`).then((res) => {
         if (res.data && res.data !== {}) {
           this.activity = res.data
         }
       })
     },
     async fetchTodos() {
-      await axios.get(`/api/todo-items`, {
+      await axios.get(`https://todo.api.devcode.gethired.id/todo-items`, {
         params: {
           activity_group_id: this.$route.params.id,
         },
@@ -210,14 +210,14 @@ export default {
       this.isModalOpen = !this.isModalOpen
     },
     async deleteTodo(id) {
-      await axios.delete(`/api/todo-items/${id}`).then(() => {
+      await axios.delete(`https://todo.api.devcode.gethired.id/todo-items/${id}`).then(() => {
         this.fetchAll()
         this.toggleModalWarning()
       })
     },
     async editActivityTitle(savePrompt) {
       if (savePrompt) {
-        await axios.patch(`/api/activity-groups/${this.activity.id}`, {
+        await axios.patch(`https://todo.api.devcode.gethired.id/activity-groups/${this.activity.id}`, {
           title: this.activity.title
         }).then(() => this.isEditActivityTitle = !this.isEditActivityTitle)
       } else {

@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     async updateActiveTodo() {
-      await axios.patch(`/api/todo-items/${this.todoItem.id}`, {
+      await axios.patch(`https://todo.api.devcode.gethired.id/todo-items/${this.todoItem.id}`, {
         is_active: this.todoItem.is_active
       }).then(() => {
         this.$emit('update-activity')

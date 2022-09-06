@@ -55,7 +55,7 @@ export default {
         if (this.todoData.title === '' || this.todoData.priority === '') {
           console.log('field empty')
         } else {
-          await axios.patch(`/api/todo-items/${this.todoData.id}`, {
+          await axios.patch(`https://todo.api.devcode.gethired.id/todo-items/${this.todoData.id}`, {
             title: this.todoData.title,
             priority: this.todoData.priority
           }).then(() => {
@@ -67,7 +67,7 @@ export default {
         if (this.todoData.title === '' || this.todoData.priority === '') {
           console.log('field empty')
         } else {
-          await axios.post(`/api/todo-items`, {
+          await axios.post(`https://todo.api.devcode.gethired.id/todo-items`, {
             activity_group_id: this.activityId,
             title: this.todoData.title,
             priority: this.todoData.priority,
