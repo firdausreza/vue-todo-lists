@@ -7,7 +7,7 @@
       <div data-cy="todo-item-priority-indicator" v-else-if="todoItem.priority === 'normal'" class="w-[15px] h-[15px] rounded-full bg-green-500 mx-3"></div>
       <div data-cy="todo-item-priority-indicator" v-else-if="todoItem.priority === 'low'" class="w-[15px] h-[15px] rounded-full bg-blue-500 mx-3"></div>
       <div data-cy="todo-item-priority-indicator" v-else-if="todoItem.priority === 'very-low'" class="w-[15px] h-[15px] rounded-full bg-purple-500 mx-3"></div>
-      <h1 data-cy="todo-title" :class="`text-xl ml-4 ${todoItem.is_active ? 'line-through text-gray-400' : ''}`">
+      <h1 data-cy="todo-item-title" :class="`text-xl ml-4 ${todoItem.is_active ? 'line-through text-gray-400' : ''}`">
         {{ todoItem.title }}
       </h1>
       <a data-cy="todo-item-edit-button" class="p-2 mx-3 cursor-pointer" @click="$emit('edit-todo', todoItem.id)">

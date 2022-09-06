@@ -19,8 +19,8 @@
           </a>
         </div>
         <div v-else class="w-[500px] ml-4 flex items-center">
-          <input v-model="activity.title" type="text" class="flex-1 p-3 bg-transparent focus:outline-none text-4xl font-bold border-b border-black">
-          <a @click="editActivityTitle(true)" class="flex items-center justify-center p-2 cursor-pointer">
+          <input data-cy="todo-title" v-model="activity.title" type="text" class="flex-1 p-3 bg-transparent focus:outline-none text-4xl font-bold border-b border-black">
+          <a data-cy="todo-title-edit-button" @click="editActivityTitle(true)" class="flex items-center justify-center p-2 cursor-pointer">
             <font-awesome-icon icon="fa-solid fa-check" class="fa-lg" />
           </a>
         </div>
@@ -34,7 +34,7 @@
           >
             <font-awesome-icon icon="fa-solid fa-filter" />
           </button>
-          <div data-cy="sort-parent" v-show="isFilterDropdownOpen" class="absolute min-w-[200px] z-1 shadow-md bg-white rounded-lg mt-3">
+          <div data-cy="sort-selection" v-show="isFilterDropdownOpen" class="absolute min-w-[200px] z-1 shadow-md bg-white rounded-lg mt-3">
             <a data-cy="sort-selection" @click="setTodoFilter('terbaru')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
               <div>
                 <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" class="mr-3 text-blue-500" />
