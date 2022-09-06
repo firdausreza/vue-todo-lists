@@ -12,7 +12,7 @@
           <a
             data-cy="todo-title-edit-button"
             class="p-2 cursor-pointer mx-4"
-            @click="editActivityTitle">
+            @click="updateTitle">
             <font-awesome-icon
               icon="fa-solid fa-pencil"
               class="fa-lg text-gray-500 hover:text-amber-500" />
@@ -20,7 +20,7 @@
         </div>
         <div v-else class="w-[500px] ml-4 flex items-center">
           <input data-cy="todo-title" v-model="activity.title" type="text" class="flex-1 p-3 bg-transparent focus:outline-none text-4xl font-bold border-b border-black">
-          <a data-cy="todo-title-edit-button" @click="editActivityTitle(true)" class="flex items-center justify-center p-2 cursor-pointer">
+          <a data-cy="todo-title-edit-button" @click="updateTitle(true)" class="flex items-center justify-center p-2 cursor-pointer">
             <font-awesome-icon icon="fa-solid fa-check" class="fa-lg" />
           </a>
         </div>
@@ -227,7 +227,7 @@ export default {
         this.toggleModalWarning()
       })
     },
-    async editActivityTitle(savePrompt) {
+    async updateTitle(savePrompt) {
       if (savePrompt) {
         await axios.patch(`https://todo.api.devcode.gethired.id/activity-groups/${this.activity.id}`, {
           title: this.activity.title
