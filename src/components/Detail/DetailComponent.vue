@@ -34,7 +34,7 @@
           >
             <font-awesome-icon icon="fa-solid fa-filter" />
           </button>
-          <div data-cy="sort-selection" v-show="isFilterDropdownOpen" class="absolute min-w-[200px] z-1 shadow-md bg-white rounded-lg mt-3">
+          <div v-show="isFilterDropdownOpen" class="absolute min-w-[200px] shadow-md bg-white rounded-lg mt-3">
             <a data-cy="sort-selection" @click="setTodoFilter('terbaru')" class="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-gray-200">
               <div>
                 <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" class="mr-3 text-blue-500" />
@@ -241,6 +241,7 @@ export default {
     },
     setTodoFilter(filter) {
       this.setFilter = filter
+      this.toggleFilterDropdown()
     }
   }
 }
